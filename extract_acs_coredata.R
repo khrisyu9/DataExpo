@@ -38,6 +38,9 @@ pop_data_va <- as_tibble(pop_matrix_va[2:nrow(pop_matrix_va), ],
 names(pop_data_dc) <- pop_matrix_dc[1, ]
 names(pop_data_md) <- pop_matrix_md[1, ]
 names(pop_data_va) <- pop_matrix_va[1, ]
-pop_data_dc
-pop_data_md
-pop_data_va
+pop_data_dc <- pop_data_dc %>% pull(NAME) 
+
+pop_data_dmv <- rbind(pop_data_md, pop_data_va)
+pop_data_dmv <- rbind(pop_data_dc, pop_data_dmv)
+
+write.csv(pop_data_dmv, "D:/dataexpo/processed_data/pop_data_dmv.csv")
