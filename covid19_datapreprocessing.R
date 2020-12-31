@@ -11,6 +11,10 @@ write.csv(countydata, "D:/dataexpo/data/covid19_cases_and_deaths/countylevel.csv
 
 # merge acs data
 
+# variable selection
+
+# different selection
+
 # splines model
 
 
