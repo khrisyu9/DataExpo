@@ -17,6 +17,8 @@ write.csv(countydata, "D:/dataexpo/data/covid19_cases_and_deaths/countylevel.csv
 
 # quadratic spline models
 
-# acs models to predict covid 
+# acs models to predict covid-19
+
+# models with pulse data
 
 
