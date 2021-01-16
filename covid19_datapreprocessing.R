@@ -21,10 +21,18 @@ for (i in 2:nrow(arlington_va)){
   arlington_va$newcases[i] = arlington_va$cases[i]-arlington_va$cases[i-1]
 }
 
-ggplot(arlington_va, aes(date, newcases)) +
-  geom_line() + 
-  xlab("")
+library (splines)
+fit=lm(newcases ~ bs(date, df = 6),data=arlington_va)
+summary(fit)
 
+pred=predict(fit,newdata =list(date=arlington_va$date),se=T)
+
+date.cases.plot <- ggplot(arlington_va, aes(date, newcases)) + 
+  geom_point() + 
+  theme_minimal() 
+
+date.cases.plot + geom_line(aes(arlington_va$date, pred$fit), color = "blue")
+ 
 
 
 
