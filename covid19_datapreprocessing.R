@@ -59,8 +59,10 @@ for (i in 1:length(va_countyname)){
   coef_df <- rbind(coef_df, fit$coefficients)
 }
 
-# merge acs data
+coef_df <- coef_df[-1,]
+coef_df_va <- cbind(va_county, coef_df)
 
+# merge acs data
 
 
 # variable selection
