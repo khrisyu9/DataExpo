@@ -36,6 +36,8 @@ for (i in 1:length(county_geo)){
   coef_df <- rbind(coef_df, fit$coefficients)
 }
 
+coef_df <- coef_df[-1,]
+
 covid_cases_by_county <- as_tibble(covid_cases_new_) %>%
   nest(-geo_value, -county_name, -state)
 
