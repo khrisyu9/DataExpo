@@ -12,6 +12,8 @@ county_code <- county_code[,-1]
 
 county_code$geo_value <- str_pad(county_code$geo_value, 5, pad = "0")
 
+covid_cases <- read.csv("D:/dataexpo/data/covidcast/covid_cases_20200301_20201231.csv")
+
 covid_cases_new <- merge(covid_cases, county_code, by = "geo_value")
 
 covid_cases_new$geo_value <- as.factor(covid_cases_new$geo_value)
@@ -28,7 +30,7 @@ coef_6 <- 0
 coef_7 <- 0
 coef_df <- data.frame(coef_1, coef_2, coef_3, coef_4, coef_5, coef_6, coef_7)
 
-county_geo <- unique(covid_cases_new_[c("geo_value")]) %>% pull(geo_value)
+county_geo <- unique(covid_cases_new_[c("geo_value")]) #%>% pull(geo_value)
 
 for (i in 1:length(county_geo)){
   county_data <- filter(covid_cases_new_, geo_value == county_geo[i])
