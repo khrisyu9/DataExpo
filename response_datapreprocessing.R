@@ -41,19 +41,19 @@ models <- dlply(covid_cases_new_, "geo_value", function(bycounty)
 # Apply coef to each model and return a data frame
 coef_df <- ldply(models, coef)
 
-for (i in 1:length(county_geo)){
-  county_data <- covid_cases_new_[which(covid_cases_new_$geo_value==county_geo[i]),]
-  fit <- lm(value ~ bs(time_value, df = 6), data = county_data)
-  coef_df <- rbind(coef_df, fit$coefficients)
-}
-
-coef_df <- coef_df[-1,]
-
-covid_cases_by_county <- as_tibble(covid_cases_new_) %>%
-  nest(-geo_value, -county_name, -state)
-
-covid_cases_splines <- covid_cases_by_county %>%
-  mutate(fit = map(data, lm(.$value ~ bs(.$time_value, df = 6))))
+# for (i in 1:length(county_geo)){
+#   county_data <- covid_cases_new_[which(covid_cases_new_$geo_value==county_geo[i]),]
+#   fit <- lm(value ~ bs(time_value, df = 6), data = county_data)
+#   coef_df <- rbind(coef_df, fit$coefficients)
+# }
+# 
+# coef_df <- coef_df[-1,]
+# 
+# covid_cases_by_county <- as_tibble(covid_cases_new_) %>%
+#   nest(-geo_value, -county_name, -state)
+# 
+# covid_cases_splines <- covid_cases_by_county %>%
+#   mutate(fit = map(data, lm(.$value ~ bs(.$time_value, df = 6))))
 
   
   
