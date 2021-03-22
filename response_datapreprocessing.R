@@ -41,6 +41,8 @@ models <- dlply(covid_cases_new_, "geo_value", function(bycounty)
 # Apply coef to each model and return a data frame
 coef_df <- ldply(models, coef)
 
+write.csv(coef_df, "D:/dataexpo/data/covidcast/coef_bsmodel_6df_20200301_20201231.csv")
+
 # for (i in 1:length(county_geo)){
 #   county_data <- covid_cases_new_[which(covid_cases_new_$geo_value==county_geo[i]),]
 #   fit <- lm(value ~ bs(time_value, df = 6), data = county_data)
