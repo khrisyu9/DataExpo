@@ -63,7 +63,13 @@ coln171 <- c("HH_Total_households",
              "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years",
              "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years_Who_are_female",
              "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years_Who_are_married",
-             "SE_"
+             "SE_Population_3_years_and_over_enrolled_in_school",
+             "SE_Population_3_years_and_over_enrolled_in_school_Nursery_school_preschool",
+             "SE_Population_3_years_and_over_enrolled_in_school_Kindergarten",
+             "SE_Population_3_years_and_over_enrolled_in_school_Elementary_school_grades_1-8",
+             "SE_Population_3_years_and_over_enrolled_in_school_High_school_grades_9-12",
+             "SE_Population_3_years_and_over_enrolled_in_school_College_or_graduate_school",
+             ""
              
              
              
