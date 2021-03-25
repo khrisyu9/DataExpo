@@ -37,11 +37,35 @@ coln171 <- c("HH_Total_households",
              "RS_Other_nonrelatives",
              "MS_Males_15_years_and_over",
              "MS_Males_Never_married",
-             "MS_Males_Now married, except separated",
+             "MS_Males_Now_married_except_separated",
              "MS_Males_Separated",
              "MS_Males_Widowed",
              "MS_Males_Divorced",
-             "MS_"
+             "MS_Females_15_years_and_over",
+             "MS_Females_Never_married",
+             "MS_Females_Now_married_except_separated",
+             "MS_Females_Separated",
+             "MS_Females_Widowed",
+             "MS_Females_Divorced",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Unmarried_women",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Unmarried_women_Per_1000_unmarried_women",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Per_1000_women_15_to_50_years_old",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Per_1000_women_15_to_19_years_old",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Per_1000_women_20_to_34_years_old",
+             "FY_Number_of_women_15_to_50_years_old_who_had_a_birth_in_the_past_12_months_Per_1000_women_35_to_50_years_old",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years_Grandparents_responsible_for_grandchildren",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years_Grandparents_responsible_for_grandchildren_Years_responsible_for_grandchildren_Less_than_1_year",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years_Grandparents_responsible_for_grandchildren_Years_responsible_for_grandchildren_1_or_2_years",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years_Grandparents_responsible_for_grandchildren_Years_responsible_for_grandchildren_3_or_4_years",
+             "GP_Number_of_grandparents_living_with_own_grandchildren_under_18_years_Grandparents_responsible_for_grandchildren_Years_responsible_for_grandchildren_5_or_more_years",
+             "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years",
+             "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years_Who_are_female",
+             "GP_Number_of_grandparents_responsible_for_own_grandchildren_under_18_years_Who_are_married",
+             
+             
+             
              
 )
 
