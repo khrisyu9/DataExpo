@@ -166,7 +166,7 @@ coln153 <- c("HH_Total_households",
              "CI_Total_households_With_a_broadband_Internet_subscription"
 )
 
-coln153 <- c("SA_Total_population",
+coln87 <- c("SA_Total_population",
              "SA_Total_population_Male",
              "SA_Total_population_Female",
              "SA_Total_population_Sex_ratio_males_per_100_females",
@@ -213,7 +213,7 @@ for (i in 1:length(temp)) {
   }
   elseif (ncol(df) == 94) {
     df_ <- df[,-c(1,26,30,34,65,73,91)]
-    colnames(df_) <- coln89
+    colnames(df_) <- coln87
   }
   assign(temp[i], df[c(TRUE,FALSE,FALSE,FALSE),]) 
   
