@@ -7,6 +7,7 @@ library(ggplot2)
 library (splines)
 library(stringr)
 
+###################################Demographic Variables#####################################33
 #read all .csv documents
 setwd("D:/dataexpo/data/acs_2019/county_1yr/demographic")
 temp = list.files(pattern="*.csv")
@@ -270,3 +271,48 @@ for (i in 1:length(temp)) {
   assign(temp[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
 }
 
+################################### Economic Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/economic")
+temp2 = list.files(pattern="*.csv")
+for (i in 1:length(temp2)) {
+  df <- read.csv(temp2[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  assign(temp2[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+}
+
+################################### Housing Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/housing")
+temp3 = list.files(pattern="*.csv")
+for (i in 1:length(temp3)) {
+  df <- read.csv(temp3[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  assign(temp3[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+  
+}
+
+################################### Social Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/social")
+temp4 = list.files(pattern="*.csv")
+for (i in 1:length(temp4)) {
+  df <- read.csv(temp4[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  assign(temp4[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+}
