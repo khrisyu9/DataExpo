@@ -7,6 +7,8 @@ library(ggplot2)
 library (splines)
 library(stringr)
 
+# data source: https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/
+
 ###################################Demographic Variables#####################################33
 #read all .csv documents
 setwd("D:/dataexpo/data/acs_2019/county_1yr/demographic")
@@ -314,5 +316,21 @@ for (i in 1:length(temp4)) {
   # transpose all but the first column (name)
   df <- as.data.frame(t(df[,-1]))
   colnames(df) <- coln
-  assign(temp4[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+  df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
+  colnames(df_) <- coln153
+  assign(temp4[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
 }
+
+###################################merge data frames 2,3,4######################################
+temp2_ = mget(ls(pattern="*2.csv"))
+temp3_ = mget(ls(pattern="*3.csv"))
+temp4_ = mget(ls(pattern="*4.csv"))
+
+big_data2 = dplyr::bind_rows(temp2_)
+big_data3 = dplyr::bind_rows(temp3_)
+big_data4 = dplyr::bind_rows(temp4_)
+
+big_data <- cbind(big_data2, big_data3)
+big_data <- cbind(big_data, big_data4)
+
+
