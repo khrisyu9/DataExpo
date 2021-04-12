@@ -166,6 +166,7 @@ coln153 <- c("HH_Total_households",
              "CI_Total_households_With_a_broadband_Internet_subscription"
              )
 
+
 coln82 <- c("SA_Total_population",
             "SA_Total_population_Male",
             "SA_Total_population_Female",
@@ -266,6 +267,6 @@ for (i in 1:length(temp)) {
     df_ <- df[,-c(1,26,30,34,35,38,60,65,66,73,74,91)]
     colnames(df_) <- coln82
   }
-  assign(temp[i], df_[c(TRUE,FALSE,FALSE,FALSE),]) 
+  assign(temp[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
 }
 
