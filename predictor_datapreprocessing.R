@@ -9,11 +9,166 @@ library(stringr)
 
 # data source: https://www.census.gov/acs/www/data/data-tables-and-tools/data-profiles/
 
-###################################Demographic Variables#####################################33
+###################################Demographic Variables#####################################
 #read all .csv documents
 setwd("D:/dataexpo/data/acs_2019/county_1yr/demographic")
 temp1 = list.files(pattern="*.csv")
 
+colDC <- c("DC_SA_Total_population_Male",
+           "DC_SA_Total_population_Female",
+           "DC_SA_Total_population_Median_age_years",
+           "DC_RC_Total_population_Two_or_more_races",
+           "DC_RC_Total_population_One_race_White",
+           "DC_RC_Total_population_One_race_Black_or_African_American",
+           "DC_RC_Total_population_One_race_American_Indian_and_Alaska_Native",
+           "DC_RC_Total_population_One_race_Asian",
+           "DC_RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander",
+           "DC_HP_Total_population_Hispanic_or_Latino_of_any_race",
+           "DC_CZ_Citizen_18_and_over_population_Male",
+           "DC_CZ_Citizen_18_and_over_population_Female"
+)
+
+for (i in 1:length(temp1)) {
+  df <- read.csv(temp1[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  df_ <- df[,c(3,4,19,37,39,40,41,46,54,75,93,94)]
+  colnames(df_) <- colDC
+  df_final <- df_[c(TRUE,FALSE,FALSE,FALSE),]
+  df_final$State <- substr(temp1[i], start = 1, stop = 2)
+  df_final <- df_final %>% relocate(State)
+  assign(temp1[i], df_final)
+}
+
+################################### Economic Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/economic")
+temp2 = list.files(pattern="*.csv")
+
+colEC <- c("EC_ES_Population_16_years_and_over_In_labor_force",
+           "EC_ES_Females_16_years_and_over_In_labor_force",
+           "EC_ES_Own_children_of_the_householder_under_6_years",
+           "EC_ES_Own_children_of_the_householder_6_to_17_years",
+           "EC_CW_Workers_16_years_and_over_Car_truck_or_van_drove_alone",
+           "EC_CW_Workers_16_years_and_over_Worked_from_home",
+           "EC_CW_Workers_16_years_and_over_Mean_travel_time_to_work_minutes",
+           "EC_OC_Management_business_science_and_arts_occupations",
+           "EC_OC_Service_occupations",
+           "EC_OC_Sales_and_office_occupations",
+           "EC_OC_Natural_resources_construction_and_maintenance",
+           "EC_OC_Production_transportation_and_material_moving",
+           "EC_CL_Civilian_employed_population_16_years_and_over_Private_wage_and_salary_workers",
+           "EC_IB_Total_households_Median_household_income_dollars",
+           "EC_IB_Families",
+           "EC_IB_Families_Median_family_income_dollars",
+           "EC_IB_Per_capita_income_dollars",
+           "EC_IB_Nonfamily_households",
+           "EC_IB_Nonfamily_households_Median_nonfamily_income_dollars"
+)
+
+for (i in 1:length(temp2)) {
+  df <- read.csv(temp2[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  df_ <- df[,c(3,12,15,17,21,26,27,30,31,32,33,34,52,68,81,92,94,95,96)]
+  colnames(df_) <- colEC
+  assign(temp2[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
+}
+
+################################### Housing Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/housing")
+temp3 = list.files(pattern="*.csv")
+for (i in 1:length(temp3)) {
+  df <- read.csv(temp3[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
+  colnames(df_) <- coln153
+  assign(temp3[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
+  
+}
+
+################################### Social Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/social")
+temp4 = list.files(pattern="*.csv")
+
+colSL <- c("SL_HH_Married-couple_family",
+           "SL_HH_Married-couple_family_With_own_children_of_the_householder_under_18_years",
+           "SL_HH_Households_with_one_or_more_people_under_18_years",
+           "SL_HH_Households_with_one_or_more_people_65_years_and_over",
+           "SL_HH_Average_household_size",
+           "SL_HH_Average_family_size",
+           "SL_RS_Spouse",
+           "SL_RS_Unmarried_partner",
+           "SL_RS_Child",
+           "SL_RS_Other_relatives",
+           "SL_RS_Other_nonrelatives",
+           "SL_MS_Males_15_years_and_over",
+           "SL_MS_Males_15_years_and_over_Never_married",
+           "SL_MS_Males_15_years_and_over_Now_married_except_separated",
+           "SL_MS_Females_15_years_and_over",
+           "SL_MS_Females_15_years_and_over_Never_married",
+           "SL_MS_Females_15_years_and_over_Now_married_except_separated",
+           "SL_SE_Population_3_years_and_over_enrolled_in_school",
+           "SL_SE_Population_3_years_and_over_enrolled_in_school_Elementary_school_grades_1-8",
+           "SL_SE_Population_3_years_and_over_enrolled_in_school_High_school_grades_9-12",
+           "SL_SE_Population_3_years_and_over_enrolled_in_school_College_or_graduate_school",
+           "SL_EA_Population_25_years_and_over_High_school_graduate_or_higher",
+           "SL_EA_Population_25_years_and_over_High_Bachelors_degree_or_higher",
+           "SL_VS_Civilian_population_18_years_and_over_Civilian_veterans",
+           "SL_DS_Total_Civilian_Noninstitutionalized_Population_With_a_disability",
+           "SL_R1_Population_1_year_and_over_Same_house",
+           "SL_R1_Population_1_year_and_over_Different_house_in_the_US",
+           "SL_PB_Total_population_Foreign_born",
+           "SL_LS_Population_5_years_and_over_Language_other_than_English",
+           "SL_CI_Total_households_With_a_computer",
+           "SL_CI_Total_households_With_a_broadband_Internet_subscription"
+)
+
+for (i in 1:length(temp4)) {
+  df <- read.csv(temp4[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  df_ <- df[,c(3,4,15,16,17,18,22,23,24,25,26,28,29,30,34,35,36,60,63,64,65,75,76,79,82,91,92,105,129,170,171)]
+  colnames(df_) <- colSL
+  assign(temp4[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
+}
+
+###################################merge data frames 2,3,4######################################
+temp1_ = mget(ls(pattern="*.csv"))
+temp2_ = mget(ls(pattern="*2.csv"))
+temp3_ = mget(ls(pattern="*3.csv"))
+temp4_ = mget(ls(pattern="*4.csv"))
+
+big_data1 = dplyr::bind_rows(temp1_)
+big_data2 = dplyr::bind_rows(temp2_)
+big_data3 = dplyr::bind_rows(temp3_)
+big_data4 = dplyr::bind_rows(temp4_)
+
+big_data <- cbind(big_data1, big_data2)
+big_data <- cbind(big_data, big_data3)
+big_data <- cbind(big_data, big_data4)
+
+#################################full raw variables below#######################################
+#demographic
 coln82 <- c("SA_Total_population",
             "SA_Total_population_Male",
             "SA_Total_population_Female",
@@ -96,63 +251,9 @@ coln82 <- c("SA_Total_population",
             "CZ_Citizen_18_and_over_population",
             "CZ_Citizen_18_and_over_population_Male",
             "CZ_Citizen_18_and_over_population_Female"
-            )
+)
 
-for (i in 1:length(temp1)) {
-  df <- read.csv(temp1[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-#  if (ncol(df) == 171) {
-#    df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
-#    colnames(df_) <- coln153
-#  }
-#  if (ncol(df) == 94) {
-  df_ <- df[,-c(1,26,30,34,35,38,60,65,66,73,74,91)]
-  colnames(df_) <- coln82
-#  }
-  assign(temp1[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
-}
-
-################################### Economic Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/economic")
-temp2 = list.files(pattern="*.csv")
-for (i in 1:length(temp2)) {
-  df <- read.csv(temp2[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  assign(temp2[i], df[c(TRUE,FALSE,FALSE,FALSE),])
-}
-
-################################### Housing Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/housing")
-temp3 = list.files(pattern="*.csv")
-for (i in 1:length(temp3)) {
-  df <- read.csv(temp3[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  assign(temp3[i], df[c(TRUE,FALSE,FALSE,FALSE),])
-  
-}
-
-################################### Social Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/social")
-temp4 = list.files(pattern="*.csv")
-
+#social
 coln153 <- c("HH_Total_households",
              "HH_Married-couple_family",
              "HH_Married-couple_family_With_own_children_of_the_householder_under_18_years",
@@ -307,30 +408,3 @@ coln153 <- c("HH_Total_households",
              "CI_Total_households_With_a_computer",
              "CI_Total_households_With_a_broadband_Internet_subscription"
 )
-
-for (i in 1:length(temp4)) {
-  df <- read.csv(temp4[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
-  colnames(df_) <- coln153
-  assign(temp4[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
-}
-
-###################################merge data frames 2,3,4######################################
-temp2_ = mget(ls(pattern="*2.csv"))
-temp3_ = mget(ls(pattern="*3.csv"))
-temp4_ = mget(ls(pattern="*4.csv"))
-
-big_data2 = dplyr::bind_rows(temp2_)
-big_data3 = dplyr::bind_rows(temp3_)
-big_data4 = dplyr::bind_rows(temp4_)
-
-big_data <- cbind(big_data2, big_data3)
-big_data <- cbind(big_data, big_data4)
-
-
