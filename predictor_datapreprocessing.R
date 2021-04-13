@@ -12,7 +12,146 @@ library(stringr)
 ###################################Demographic Variables#####################################33
 #read all .csv documents
 setwd("D:/dataexpo/data/acs_2019/county_1yr/demographic")
-temp = list.files(pattern="*.csv")
+temp1 = list.files(pattern="*.csv")
+
+coln82 <- c("SA_Total_population",
+            "SA_Total_population_Male",
+            "SA_Total_population_Female",
+            "SA_Total_population_Sex_ratio_males_per_100_females",
+            "SA_Total_population_Under_5_years",
+            "SA_Total_population_5_to_9_years",
+            "SA_Total_population_10_to_14_years",
+            "SA_Total_population_15_to_19_years",
+            "SA_Total_population_20_to_24_years",
+            "SA_Total_population_25_to_34_years",
+            "SA_Total_population_35_to_44_years",
+            "SA_Total_population_45_to_54_years",
+            "SA_Total_population_55_to_59_years",
+            "SA_Total_population_60_to_64_years",
+            "SA_Total_population_65_to_74_years",
+            "SA_Total_population_75_to_84_years",
+            "SA_Total_population_85_years_and_over",
+            "SA_Total_population_Median_age_years",
+            "SA_Total_population_Under_18_years",
+            "SA_Total_population_16_years_and_over",
+            "SA_Total_population_18_years_and_over",
+            "SA_Total_population_21_years_and_over",
+            "SA_Total_population_62_years_and_over",
+            "SA_Total_population_65_years_and_over",
+            "SA_Total_population_18_years_and_over_Male",
+            "SA_Total_population_18_years_and_over_Female",
+            "SA_Total_population_18_years_and_over_Sex_ratio_males_per_100_females",
+            "SA_Total_population_65_years_and_over_Male",
+            "SA_Total_population_65_years_and_over_Female",
+            "SA_Total_population_65_years_and_over_Sex_ratio_males_per_100_females",
+            "RC_Total_population_One_race",
+            "RC_Total_population_Two_or_more_races",
+            "RC_Total_population_One_race_White",
+            "RC_Total_population_One_race_Black_or_African_American",
+            "RC_Total_population_One_race_American_Indian_and_Alaska_Native",
+            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Cherokee_tribal_grouping",
+            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Chippewa_tribal_grouping",
+            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Navajo_tribal_grouping",
+            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Sioux_tribal_grouping",
+            "RC_Total_population_One_race_Asian",
+            "RC_Total_population_One_race_Asian_Asian_Indian",
+            "RC_Total_population_One_race_Asian_Chinese",
+            "RC_Total_population_One_race_Asian_Filipino",
+            "RC_Total_population_One_race_Asian_Japanese",
+            "RC_Total_population_One_race_Asian_Korean",
+            "RC_Total_population_One_race_Asian_Vietnamese",
+            "RC_Total_population_One_race_Asian_Other_Asian",
+            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander",
+            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Native_Hawaiian",
+            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Guamanian_or_Chamorro",
+            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Samoan",
+            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Other_Pacific_Islander",
+            "RC_Total_population_One_race_Some_other_race",
+            "RC_Total_population_Two_or_more_races_White_and_Black_or_African_American",
+            "RC_Total_population_Two_or_more_races_White_and_American_Indian_and_Alaska_Native",
+            "RC_Total_population_Two_or_more_races_White_and_Asian",
+            "RC_Total_population_Two_or_more_races_Black_or_African_American_and_American_Indian_and_Alaska_Native",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_White",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Black_or_African_American",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_American_Indian_and_Alaska_Native",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Asian",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Native_Hawaiian_and_Other_Pacific_Islander",
+            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Some_other_race",
+            "HP_Total_population_Hispanic_or_Latino_of_any_race",
+            "HP_Total_population_Hispanic_or_Latino_of_any_race_Mexican",
+            "HP_Total_population_Hispanic_or_Latino_of_any_race_Puerto_Rican",
+            "HP_Total_population_Hispanic_or_Latino_of_any_race_Cuban",
+            "HP_Total_population_Hispanic_or_Latino_of_any_race_Other_Hispanic_or_Latino",
+            "HP_Total_population_Not_Hispanic_or_Latino",
+            "HP_Total_population_Not_Hispanic_or_Latino_White_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_Black_or_African_American_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_American_Indian_and_Alaska_Native_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_Asian_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_Native_Hawaiian_and_Other_Pacific_Islander_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_Some_other_race_alone",
+            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races",
+            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races_Two_races_including_Some_other_race",
+            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races_Two_races_excluding_Some_other_race_and_Three_or_more_races",
+            "HP_Total_housing_units",
+            "CZ_Citizen_18_and_over_population",
+            "CZ_Citizen_18_and_over_population_Male",
+            "CZ_Citizen_18_and_over_population_Female"
+            )
+
+for (i in 1:length(temp1)) {
+  df <- read.csv(temp1[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+#  if (ncol(df) == 171) {
+#    df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
+#    colnames(df_) <- coln153
+#  }
+#  if (ncol(df) == 94) {
+  df_ <- df[,-c(1,26,30,34,35,38,60,65,66,73,74,91)]
+  colnames(df_) <- coln82
+#  }
+  assign(temp1[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
+}
+
+################################### Economic Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/economic")
+temp2 = list.files(pattern="*.csv")
+for (i in 1:length(temp2)) {
+  df <- read.csv(temp2[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  assign(temp2[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+}
+
+################################### Housing Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/housing")
+temp3 = list.files(pattern="*.csv")
+for (i in 1:length(temp3)) {
+  df <- read.csv(temp3[i])
+  names(df)[1] <- "Label"
+  # first remember the column names
+  coln <- df$Label
+  # transpose all but the first column (name)
+  df <- as.data.frame(t(df[,-1]))
+  colnames(df) <- coln
+  assign(temp3[i], df[c(TRUE,FALSE,FALSE,FALSE),])
+  
+}
+
+################################### Social Variables #####################################
+#read all .csv documents
+setwd("D:/dataexpo/data/acs_2019/county_1yr/social")
+temp4 = list.files(pattern="*.csv")
 
 coln153 <- c("HH_Total_households",
              "HH_Married-couple_family",
@@ -167,147 +306,8 @@ coln153 <- c("HH_Total_households",
              "CI_Total_households",
              "CI_Total_households_With_a_computer",
              "CI_Total_households_With_a_broadband_Internet_subscription"
-             )
+)
 
-
-coln82 <- c("SA_Total_population",
-            "SA_Total_population_Male",
-            "SA_Total_population_Female",
-            "SA_Total_population_Sex_ratio_males_per_100_females",
-            "SA_Total_population_Under_5_years",
-            "SA_Total_population_5_to_9_years",
-            "SA_Total_population_10_to_14_years",
-            "SA_Total_population_15_to_19_years",
-            "SA_Total_population_20_to_24_years",
-            "SA_Total_population_25_to_34_years",
-            "SA_Total_population_35_to_44_years",
-            "SA_Total_population_45_to_54_years",
-            "SA_Total_population_55_to_59_years",
-            "SA_Total_population_60_to_64_years",
-            "SA_Total_population_65_to_74_years",
-            "SA_Total_population_75_to_84_years",
-            "SA_Total_population_85_years_and_over",
-            "SA_Total_population_Median_age_years",
-            "SA_Total_population_Under_18_years",
-            "SA_Total_population_16_years_and_over",
-            "SA_Total_population_18_years_and_over",
-            "SA_Total_population_21_years_and_over",
-            "SA_Total_population_62_years_and_over",
-            "SA_Total_population_65_years_and_over",
-            "SA_Total_population_18_years_and_over_Male",
-            "SA_Total_population_18_years_and_over_Female",
-            "SA_Total_population_18_years_and_over_Sex_ratio_males_per_100_females",
-            "SA_Total_population_65_years_and_over_Male",
-            "SA_Total_population_65_years_and_over_Female",
-            "SA_Total_population_65_years_and_over_Sex_ratio_males_per_100_females",
-            "RC_Total_population_One_race",
-            "RC_Total_population_Two_or_more_races",
-            "RC_Total_population_One_race_White",
-            "RC_Total_population_One_race_Black_or_African_American",
-            "RC_Total_population_One_race_American_Indian_and_Alaska_Native",
-            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Cherokee_tribal_grouping",
-            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Chippewa_tribal_grouping",
-            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Navajo_tribal_grouping",
-            "RC_Total_population_One_race_American_Indian_and_Alaska_Native_Sioux_tribal_grouping",
-            "RC_Total_population_One_race_Asian",
-            "RC_Total_population_One_race_Asian_Asian_Indian",
-            "RC_Total_population_One_race_Asian_Chinese",
-            "RC_Total_population_One_race_Asian_Filipino",
-            "RC_Total_population_One_race_Asian_Japanese",
-            "RC_Total_population_One_race_Asian_Korean",
-            "RC_Total_population_One_race_Asian_Vietnamese",
-            "RC_Total_population_One_race_Asian_Other_Asian",
-            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander",
-            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Native_Hawaiian",
-            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Guamanian_or_Chamorro",
-            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Samoan",
-            "RC_Total_population_One_race_Native_Hawaiian_and_Other_Pacific_Islander_Other_Pacific_Islander",
-            "RC_Total_population_One_race_Some_other_race",
-            "RC_Total_population_Two_or_more_races_White_and_Black_or_African_American",
-            "RC_Total_population_Two_or_more_races_White_and_American_Indian_and_Alaska_Native",
-            "RC_Total_population_Two_or_more_races_White_and_Asian",
-            "RC_Total_population_Two_or_more_races_Black_or_African_American_and_American_Indian_and_Alaska_Native",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_White",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Black_or_African_American",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_American_Indian_and_Alaska_Native",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Asian",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Native_Hawaiian_and_Other_Pacific_Islander",
-            "RC_Race_alone_or_in_combination_with_one_or_more_other_races_Total_population_Some_other_race",
-            "HP_Total_population_Hispanic_or_Latino_of_any_race",
-            "HP_Total_population_Hispanic_or_Latino_of_any_race_Mexican",
-            "HP_Total_population_Hispanic_or_Latino_of_any_race_Puerto_Rican",
-            "HP_Total_population_Hispanic_or_Latino_of_any_race_Cuban",
-            "HP_Total_population_Hispanic_or_Latino_of_any_race_Other_Hispanic_or_Latino",
-            "HP_Total_population_Not_Hispanic_or_Latino",
-            "HP_Total_population_Not_Hispanic_or_Latino_White_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_Black_or_African_American_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_American_Indian_and_Alaska_Native_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_Asian_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_Native_Hawaiian_and_Other_Pacific_Islander_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_Some_other_race_alone",
-            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races",
-            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races_Two_races_including_Some_other_race",
-            "HP_Total_population_Not_Hispanic_or_Latino_Two_or_more_races_Two_races_excluding_Some_other_race_and_Three_or_more_races",
-            "HP_Total_housing_units",
-            "CZ_Citizen_18_and_over_population",
-            "CZ_Citizen_18_and_over_population_Male",
-            "CZ_Citizen_18_and_over_population_Female"
-            )
-
-for (i in 1:length(temp)) {
-  df <- read.csv(temp[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  if (ncol(df) == 171) {
-    df_ <- df[,-c(1,19,27,40,48,51,59,66,77,80,89,98,106,110,118,126,139,168)]
-    colnames(df_) <- coln153
-  }
-  if (ncol(df) == 94) {
-    df_ <- df[,-c(1,26,30,34,35,38,60,65,66,73,74,91)]
-    colnames(df_) <- coln82
-  }
-  assign(temp[i], df_[c(TRUE,FALSE,FALSE,FALSE),])
-}
-
-################################### Economic Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/economic")
-temp2 = list.files(pattern="*.csv")
-for (i in 1:length(temp2)) {
-  df <- read.csv(temp2[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  assign(temp2[i], df[c(TRUE,FALSE,FALSE,FALSE),])
-}
-
-################################### Housing Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/housing")
-temp3 = list.files(pattern="*.csv")
-for (i in 1:length(temp3)) {
-  df <- read.csv(temp3[i])
-  names(df)[1] <- "Label"
-  # first remember the column names
-  coln <- df$Label
-  # transpose all but the first column (name)
-  df <- as.data.frame(t(df[,-1]))
-  colnames(df) <- coln
-  assign(temp3[i], df[c(TRUE,FALSE,FALSE,FALSE),])
-  
-}
-
-################################### Social Variables #####################################
-#read all .csv documents
-setwd("D:/dataexpo/data/acs_2019/county_1yr/social")
-temp4 = list.files(pattern="*.csv")
 for (i in 1:length(temp4)) {
   df <- read.csv(temp4[i])
   names(df)[1] <- "Label"
